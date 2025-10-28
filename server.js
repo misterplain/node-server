@@ -2,7 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const path = require("path");
 const cors = require("cors");
-require('dotenv').config();
+require("dotenv").config();
 const passport = require("./mern-ecommerce/middleware/passport");
 const session = require("express-session");
 const app = express();
@@ -24,7 +24,7 @@ const userRoutes = require("./mern-ecommerce/routes/userRoutes");
     const conn = await mongoose.connect(process.env.MONGO_URI);
     console.log(`MongoDB Connected: ${conn.connection.host}`);
   } catch (error) {
-    console.log(process.env.MONGO_URI)
+    console.log(process.env.MONGO_URI);
     console.error(`Error: ${error.message}`);
     process.exit(1);
   }
@@ -58,7 +58,6 @@ mongoose.connection.on("error", (err) => {
 app.use(passport.initialize());
 app.use(passport.session());
 
-
 // console.log(typeof process.env.RAPID_API_KEY)
 app.use("/", express.static(path.resolve(path.join(__dirname, "./build"))));
 
@@ -67,15 +66,19 @@ app.use(express.json());
 const whitelist = [
   "http://localhost:3000",
   "http://localhost:5000",
-  "https://accounts.google.com", 
-  "https://github.com", 
-  "https://e-commerce-mern-eryu.onrender.com", 
-  "https://e-commerce-mern-api.onrender.com", 
+  "https://accounts.google.com",
+  "https://github.com",
+  "https://e-commerce-mern-eryu.onrender.com",
+  "https://e-commerce-mern-api.onrender.com",
+  "https://hpnotepad.onrender.com",
+  "https://fantasticfy.onrender.com",
+  "https://patrickobrien.onrender.com",
+  "https://node-server-4m2h.onrender.com/hpnotepad",
 ];
 app.use(
   cors({
     origin: function (origin, callback) {
-      console.log("Origin: ", origin); 
+      console.log("Origin: ", origin);
       if (whitelist.indexOf(origin) !== -1 || !origin) {
         callback(null, true);
       } else {
@@ -100,7 +103,6 @@ app.use("/mern-ecommerce/product", productRoutes);
 app.use("/mern-ecommerce/reviews", reviewRoutes);
 app.use("/mern-ecommerce/cart", cartRoutes);
 app.use("/mern-ecommerce/orders", orderRoutes);
-
 
 const port = process.env.PORT || 5000;
 
