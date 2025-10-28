@@ -16,6 +16,8 @@ const reviewRoutes = require("./mern-ecommerce/routes/reviewRoutes");
 const cartRoutes = require("./mern-ecommerce/routes/cartRoutes");
 const orderRoutes = require("./mern-ecommerce/routes/orderRoutes");
 const userRoutes = require("./mern-ecommerce/routes/userRoutes");
+// nodemailer
+const nodemailerRoute = require("./utils/nodemailer");
 
 // Connect DB
 (async () => {
@@ -91,6 +93,9 @@ app.use(
 );
 
 app.use(express.urlencoded({ extended: true }));
+
+// nodemailer route
+app.use("/nodemailer", nodemailerRoute);
 
 // hpnotepad routes
 app.use("/hpnotepad/data", dataRoute);
