@@ -1,0 +1,9 @@
+
+/node_modules
+node_modules/
+/.env
+.env
+/.DS_Store
+.DS_Store
+hpnotepad/.DS_Store
+mern-ecommerce/.DS_Store
