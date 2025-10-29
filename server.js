@@ -18,6 +18,8 @@ const orderRoutes = require("./mern-ecommerce/routes/orderRoutes");
 const userRoutes = require("./mern-ecommerce/routes/userRoutes");
 // nodemailer
 const nodemailerRoute = require("./utils/nodemailer");
+// keepalive
+const keepaliveRoute = require("./utils/keepalive");
 
 // Connect DB
 (async () => {
@@ -97,6 +99,9 @@ app.use(
 );
 
 app.use(express.urlencoded({ extended: true }));
+
+// keepalive route
+app.use("/keepalive", keepaliveRoute);
 
 // nodemailer route
 app.use("/nodemailer", nodemailerRoute);
