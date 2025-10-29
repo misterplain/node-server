@@ -75,13 +75,17 @@ const whitelist = [
   "https://hpnotepad.onrender.com",
   "https://fantasticfy.onrender.com",
   "https://patrickobrien.onrender.com",
-  "https://node-server-4m2h.onrender.com/hpnotepad",
+  "https://node-server-4m2h.onrender.com",
 ];
 app.use(
   cors({
     origin: function (origin, callback) {
       console.log("Origin: ", origin);
-      if (whitelist.indexOf(origin) !== -1 || !origin) {
+      // Allow requests with no origin (like Postman, mobile apps, server-to-server)
+      if (!origin) {
+        return callback(null, true);
+      }
+      if (whitelist.indexOf(origin) !== -1) {
         callback(null, true);
       } else {
         callback(new Error("Not allowed by CORS"));
