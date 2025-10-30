@@ -15,9 +15,14 @@ const GITHUB_CLIENT_SECRET = process.env.GITHUB_CLIENT_SECRET;
 const FACEBOOK_CLIENT_SECRET = process.env.FACEBOOK_CLIENT_SECRET;
 const FACEBOOK_CLIENT_ID = process.env.FACEBOOK_CLIENT_ID;
 
-
-const SERVER_URL = process.env.SERVER_URL || "http://localhost:5000/mern-ecommerce";
-const CLIENT_URL = process.env.CLIENT_URL || "http://localhost:3000";
+const SERVER_URL =
+  process.env.NODE_ENV === "production"
+    ? process.env.SERVER_URL
+    : "http://localhost:5000/";
+const CLIENT_URL =
+  process.env.NODE_ENV === "production"
+    ? process.env.CLIENT_URL
+    : "http://localhost:3000";
 
 passport.use(
   new GoogleStrategy(
