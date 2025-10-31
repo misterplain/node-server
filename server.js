@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const path = require("path");
 const cors = require("cors");
 require("dotenv").config();
-const passport = require("./mern-ecommerce/middleware/passport");
+const passport = require("./utils/passport");
 const session = require("express-session");
 const app = express();
 // notepad routes
