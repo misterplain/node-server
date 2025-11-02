@@ -80,6 +80,7 @@ const whitelist = [
   "https://hpnotepad.onrender.com",
   "https://fantasticfy.onrender.com",
   "https://patrickobrien.onrender.com",
+  "https://studypad.onrender.com",
   "https://node-server-4m2h.onrender.com",
 ];
 app.use(
