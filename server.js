@@ -122,8 +122,8 @@ app.use("/mern-ecommerce/cart", cartRoutes);
 app.use("/mern-ecommerce/orders", orderRoutes);
 
 // studyPad routes
-app.use("/studyPad/auth", authStudyPadRoutes);
-app.use("/studyPad/notes", noteStudyPadRoutes);
+app.use("/studypad/auth", authStudyPadRoutes);
+app.use("/studypad/notes", noteStudyPadRoutes);
 
 const port = process.env.PORT || 5000;
 
