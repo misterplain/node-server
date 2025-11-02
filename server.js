@@ -20,6 +20,9 @@ const userRoutes = require("./mern-ecommerce/routes/userRoutes");
 const nodemailerRoute = require("./utils/nodemailer");
 // keepalive
 const keepaliveRoute = require("./utils/keepalive");
+// studyPad 
+const authStudyPadRoutes = require("./studyPad/routes/authRoutes");
+const noteStudyPadRoutes = require("./studyPad/routes/noteRoutes");
 
 // Connect DB
 (async () => {
@@ -117,6 +120,10 @@ app.use("/mern-ecommerce/product", productRoutes);
 app.use("/mern-ecommerce/reviews", reviewRoutes);
 app.use("/mern-ecommerce/cart", cartRoutes);
 app.use("/mern-ecommerce/orders", orderRoutes);
+
+// studyPad routes
+app.use("/studyPad/auth", authStudyPadRoutes);
+app.use("/studyPad/notes", noteStudyPadRoutes);
 
 const port = process.env.PORT || 5000;
 
