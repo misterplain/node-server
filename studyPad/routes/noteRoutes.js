@@ -28,6 +28,11 @@ const buildHierarchy = async (userId) => {
   });
   const sortChildren = (arr) => {
     arr.sort((a, b) => {
+      // Sort pinned items first
+      const pa = a.isPinned ?? false;
+      const pb = b.isPinned ?? false;
+      if (pa !== pb) return pb - pa; // pinned first
+      // Then by urgency
       const ua = a.urgency ?? 3;
       const ub = b.urgency ?? 3;
       if (ub !== ua) return ub - ua; // 3 -> 1 descending
@@ -206,6 +211,9 @@ router.put(
         throw new Error("Urgency must be 1, 2, or 3");
       }
       note.urgency = urgency;
+    }
+    if (req.body.hasOwnProperty("isPinned")) {
+      note.isPinned = !!req.body.isPinned;
     }
 
     await note.save();

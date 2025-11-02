@@ -47,6 +47,11 @@ const noteItemSchema = new mongoose.Schema(
       default: 3,
       index: true,
     },
+    isPinned: {
+      type: Boolean,
+      default: false,
+      index: true,
+    },
   },
   {
     timestamps: true,
